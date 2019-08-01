@@ -1,0 +1,437 @@
+---
+title: "CICLOS"
+author: "Miranda Belmonte Hairo"
+date: "9 de septiembre de 2016"
+output: word_document
+---
+
+#--Ejercicio 1
+```{r,eval=FALSE}
+speed<-90
+while(speed >=30){
+  print("B("jale")
+  speed<-speed -7
+}
+speed
+```
+si voy a m("s de treinta, indicame que le baje, y mas aparte
+bajale 7 a la velocidad.
+
+ 
+#--Fin Ejercicio 1
+
+
+#--Ejercicio 2
+```{r,eval=FALSE}
+speed<-64
+while(speed>48){
+  print(paste("Tu velocidad es",speed<-speed-11))
+if (speed>48){
+  print("B("jale pero mucho!")
+}else{
+ speed<-speed-6
+  print("B("jale")
+}
+}
+speed
+```
+#--Fin Ejercicio 2
+
+#--Ejercicio 3
+```{r,eval=FALSE}
+speed<-86
+while(speed>80){
+  print(paste("Tu velocidad es",speed<-speed-11))
+  if (speed>80){
+    break
+  }else{
+    speed<-speed-6
+    print("B("jale")
+  }
+}
+speed
+```
+#--Fin Ejercicio 3
+
+#--Ejercicio 4
+```{r,eval=FALSE}
+speed<-80
+while(speed>80){
+  print(paste("Tu velocidad es",speed<-speed-11))
+  if (speed>80){
+    break
+  }else{
+    speed<-speed-6
+    print("B("jale")
+  }
+}
+speed
+```
+
+
+```{r,eval=FALSE}
+i<-2
+
+while (i<10){
+  print(paste(i*3,i+1))
+  if (i%%8==2){
+    break
+  }else{
+    print(i*3)
+  }
+} 
+```
+#--Fin Ejercicio 4
+
+CICLO "FOR""
+```{r,eval=FALSE}
+for(i in 1:10){
+  print(i)
+}
+i
+
+# si cambi(. i
+i<-54
+for (i in 1:10) {
+  print(i)
+  }
+i
+```
+
+INDEXANDO
+```{r,eval=FALSE}
+primos<-c(2,3,5,7,11,13)
+```
+
+versi(.n 1
+```{r,eval=FALSE}
+for (p in primos){
+  print(p)
+}
+```
+
+versi(.n 2
+```{r,eval=FALSE}
+for (i in 1:length(primos)){
+  print(primos[i])
+}
+```
+
+versi(.n 3
+```{r,eval=FALSE}
+for (i in seq_along(primos)){
+  print(primos[i])
+}
+```
+
+#--EJERCICIO 5
+Considera el vector
+```{r,eval=FALSE}
+linkedin<-c(16,9,13,5,2,17,14)
+```
+
+Escribe un ciclo for en cada de las tres versiones que imprima cadaelementode lindekin porseparado. Hacer un ciclo por una lista es similar, por ejemplo
+
+```{r,eval=FALSE}
+for (l in linkedin){
+  print(l)
+}
+```
+
+```{r,eval=FALSE}
+for (i in 1:length(linkedin)){
+print (linkedin[i])
+}
+```
+
+```{r,eval=FALSE}
+for (i in seq_along(linkedin)){
+  print(linkedin[i])
+}
+```
+#--Fin de Ejercicio 5
+
+#--EJERCICIO 6
+Considera la lista
+
+```{r,eval=FALSE}
+nyc<- list(pop=8405837,
+suburbios = c("Manhattan","Bronx","Brooklyn","Queens","Staten Island"),
+ capital=FALSE)
+```
+Imprime sus elementos de las tres formas
+
+Versi(.n 1
+```{r,eval=FALSE}
+for (p in pop){
+  print(p)
+}
+```  
+Versi(.n 2
+```{r,eval=FALSE}
+for (t in 1:length(pop)){
+  print(pop[t])
+}
+```
+Versi(.n 3
+```{r,eval=FALSE}
+for (t in seq_along(pop)){
+  print(pop[t])
+}
+```
+
+Versi(.n 1
+```{r,eval=FALSE}
+for ( s in suburbios){
+  print(s)
+}
+```  
+Versi(.n 2
+```{r,eval=FALSE}
+for (s in 1:length(suburbios)){
+  print(suburbios[s])
+}
+```
+Versi(.n 3
+```{r,eval=FALSE}
+for (s in seq_along(suburbios)){
+  print(suburbios[s])
+}
+```
+#--FIN EJERCICIO 6  
+
+#-- EJERCICIOS 7
+```{r,eval=FALSE}
+g<-c("0",NA,"X",NA,"0","0","X",NA,"X")
+gato<-matrix(g,nrow = 3,ncol = 3,byrow = TRUE)
+```
+
+```{r,eval=FALSE}
+for (i in row(gato)) {
+ for (j in col(gato)) {
+   print(paste("En el renglon",i,"columnda",j,"el juego contiene",gato[i,j]))
+ } 
+}
+```
+#--FIN EJERCICIO 7
+
+#--EJERCICIO 8
+```{r,eval=FALSE}
+linkedin<-c(16,9,13,5,2,17,14)
+```
+```{r,eval=FALSE}
+for (i in linkedin) {
+  if(i>9){
+    print(paste("Popular",i))
+  }else{
+    print(paste("Hazte notar",i))
+  }
+}
+```
+#--FIN EJERCICIO 8
+
+#--EJERCICIO 9
+```{r,eval=FALSE}
+for (i in linkedin){
+  if(i>9){
+    print(paste("Popular",i))
+  }else if (i>16){
+  print(paste("Ya es mucho",break))
+    }else if (i<5){
+    print(paste("Vergonzoso",next))
+      }else {
+    print(paste("Hazte notar",i))
+    }
+  }
+  
+
+```
+#--FIN EJERCICIO 9
+
+#--EJERCICIO 10
+```{r,eval=FALSE}
+rquote<- "los caminos internos de r son irrefutablemente intrigantes"
+chars <- strsplit(rquote, split = "")[[1]]
+cuenta.r=0
+for (i in chars) {
+  if (i=="r") {
+    print(cuenta.r<-cuenta.r+1)
+  }else if (i=="u") {
+    break
+  } 
+}
+
+cuenta.r
+```
+#--FIN EJERCICIO 10
+
+
+
+####lapply()
+Pasar un vector character de mayusculas a minusculas con la función tolower
+```{r,eval=FALSE}
+?lapply
+nombres<-c("GAUSS","BERNOULLI","KOLMOGOROV")
+```
+
+Versión For
+```{r,eval=FALSE}
+for (i in seq_along(nombres)){
+ print(tolower(nombres[i])) 
+}
+
+for (i in nombres) {
+  print(tolower(i))
+}
+```
+Versión lapply
+```{r,eval=FALSE}
+minusculas <- lapply(nombres, tolower) 
+minusculas 
+str(minusculas)
+```
+
+```{r,eval=FALSE}
+select_prim<-function(x){
+  x[1]
+}
+grandes<-c("GAUSS:1777","BERNOULLI:1700","KOLMOGOROV:1903") 
+split<-strsplit(grandes, split=":") split_min<- lapply(split, tolower)
+nombres<-lapply(split_min, select_prim)
+
+select_sec<-function(y){
+  y[2]
+}
+años<-lapply(split_min, select_sec)
+```
+
+Funciones anónimas
+funciones dentro del propio lapply.
+```{r,eval=FALSE}
+#Versión con Función pre-definida
+triple<-function(x){3*x}
+lapply(list(1,2,3), triple)
+
+#Versión con Función anónima
+lapply(list(1,2,3), function(x){3*x})
+```
+#--FIN EJERCICIO
+
+
+#---Ejercicio
+Usa lapply anónimo para el ejercicio pasado.
+```{r,eval=FALSE}
+
+grandes<-c("GAUSS:1777","BERNOULLI:1700","KOLMOGOROV:1903") 
+split<-strsplit(grandes, split=":") 
+split_min<- lapply(split, tolower)
+nombres<-lapply(split_min,function(x){x[1]})
+años<-lapply(split_min,function(y){y[2]})
+```
+lapply(), permite pasar otros argumentos extras.
+```{r,eval=FALSE}
+multi<-function(x,factor){
+  x*factor
+}
+
+multi(3,4)
+lapply(list(1,2,3),multi, factor=4)
+```
+#--FIN EJERCICIO
+
+
+#--EJERCICIO 
+```{r,eval=FALSE}
+select_ind<-function(x,index){
+  x[index]
+}
+lapply(split_min, select_ind)
+```
+#--FIN EJERCICIO
+
+
+####sapply()
+similar a lapply, primer argumento un vector o lista, segundo argumento una función pero con argumentos potenciales.
+s de sapply significa simplificación.
+Trata de simplificar a lapply.
+sapply llama a lapply, después simplifica.
+
+```{r,eval=FALSE}
+temp <- list( c(3,6,9,7,-3), c(6,12,13,4,9), c(4,-1,-3,8,7), c(1, 7, 2,3, 4), c(5,9,8,4,5,-1), c(-3,0,3,-1,5,6), c(3,6,9,12,4,8) )
+```
+
+
+#--EJERCICIO 
+```{r,eval=FALSE}
+for (i in 1:7){
+  print(min(temp[[i]]))
+}
+va<-function(x){
+  min(x)
+}
+lapply(temp,va)
+sapply(temp,va)
+
+ve<-function(x){
+  max(x)
+}
+lapply(temp,ve)
+sapply(temp,ve)
+```
+#--FIN EJERCICIO
+
+#--EJERCICIO 
+```{r,eval=FALSE}
+prom_extremos<-function(x){
+  min(x)/2
+}
+lapply(temp,prom_extremos)
+sapply(temp,prom_extremos)
+
+prom_extremos2<-function(y){
+  max(y)/2
+}
+lapply(temp,prom_extremos2)
+sapply(temp,prom_extremos2)
+
+prom_extremos3<-function(x){
+ c(max(x)/2,min(x)/2)
+}
+lapply(temp,prom_extremos3)
+sapply(temp,prom_extremos3)
+```
+#--FIN EJERCICIO
+
+#--EJERCICIO 
+Utiliza extremos definidos.
+```{r,eval=FALSE}
+extremos<- function(x){
+  c(min=min(x),max=max(x))
+}
+lapply(temp,extremos)
+sapply(temp,extremos)
+```
+#--FIN EJERCICIO
+
+#--EJERCICIO
+```{r,eval=FALSE}
+bajo_cero<-function(x){x<0}
+lapply(temp,bajo_cero)
+sapply(temp,bajo_cero)
+```
+Ninguna Diferencia entre sapply y lapply para este ejercicio.
+```{r,eval=FALSE}
+sapply(list(rnorm (100), rnorm (100)), function(x) c(min = min(x), media = mean(x), max = max(x)))
+```
+#--FIN EJERCICIO
+
+#--EJERCICIO
+Poner nombres a las variables de lista
+```{r,eval=FALSE}
+sapply(list(X=rnorm (100), Y=rnorm (100)), function(x) c(min = min(x), mediana = median(x),ran.int=IQR(x), max = max(x)))
+```
+#--FIN EJERCICIO
+
+#--FIN
+```
+

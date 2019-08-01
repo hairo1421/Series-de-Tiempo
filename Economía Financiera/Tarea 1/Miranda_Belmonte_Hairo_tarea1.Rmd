@@ -1,0 +1,237 @@
+---
+title: "Miranda_Belmonte_Hairo_tarea1"
+author: "Miranda Belmonte Hairo"
+date: "10 de septiembre de 2016"
+output: word_document
+---
+EJERCICIO 1
+```{r,message==FALSE}
+library(astsa)
+
+class(jj)
+?jj
+
+```
+a)
+Lo que mide la serie son :
+Quarterly Earnings Per Share
+84 quarters (21 years) measured from the first quarter of 1960 to the last quarter of 1980.
+
+b)inicio, fin y frecuencia de la serie
+
+```{r}
+end(jj)
+start(jj)
+frequency(jj)
+cycle(jj)
+```
+
+c) Grafica de las series
+```{r}
+start(jj)
+plot(jj, main= "Qrts", xlab = "Tiempo", ylab = "")
+ljj<-log(jj)
+plot(ljj, main= "Qrts", xlab = "Tiempo", ylab = "")
+```
+
+Se toman Logs dado el comportamiento de tendencia estocastica
+```{r}
+timp=as.numeric(time(ljj))
+
+fit=lm(ljj~timp)
+```
+lines(timp,fit$fitted.values,col="red",lty=2,lwd=2)
+
+
+```{r}
+fit
+```
+Un incremento de un aqo en el tiempo, aumentaria en .16 por ciento en promedio
+la ganancia por accisn en promedio.
+```{r}
+residuos <- resid(fit)
+plot(residuos,type="l")
+library(forecast)
+tsdisplay(residuos)
+```
+FIN DE EJERCICIO 1
+
+EJERCICIO 2
+ Utilice las series cmort, part y tempr de su espacio de trabajo
+ 
+ a. Investigue qui es cada cosa
+```{r}
+?cmort
+start(cmort)
+end(cmort)
+?part
+start(part)
+end(part)
+?tempr
+start(tempr)
+end(tempr)
+```
+Cardiovascular Mortality from the LA Pollution study (cmort)
+Particulate levels from the LA pollution study (part)
+Temperatures from the LA pollution study(tempr)
+
+b. Utilice los datos para ajustar el modelo
+cmortt = a+_1t+_2temprt +_3tempr2 t +_4partt 
+
+```{r}
+tiemp=as.numeric(time(cmort))
+mod<-lm(cmort ~ tiemp + tempr + I(tempr^2) + part)
+mod
+```
+
+```{r}
+sumod<-summary(mod)
+lim.sup.alpha<-2.991e+03+1.994e+02*1.96
+lim.inf.alpha<-2.991e+03-(1.994e+02*1.96)
+alpha<-2.991e+03 
+alph<-c(lim.inf.alpha,alpha,lim.sup.alpha)
+
+lim.sup.tiemp<--1.396e+00 +1.010e-01*1.96
+lim.inf.tiemp<--1.396e+00 -(1.010e-01*1.96)
+tiemp<--1.396e+00 
+tiempo<-c(lim.inf.tiemp,tiemp,lim.sup.tiemp)
+
+lim.sup.tempr<--3.827e+00 + 4.236e-01*1.96
+lim.inf.tempr<--3.827e+00 -( 4.236e-01*1.96)
+tempr<--3.827e+00
+temp<-c(lim.inf.tempr,tempr,lim.sup.tempr)
+
+lim.sup.tempr2<- 2.259e-02 +  2.827e-03*1.96
+lim.inf.tempr2<- 2.259e-02 -(  2.827e-03*1.96)
+tempr2<- 2.259e-02
+temp2<-c(lim.inf.tempr2,tempr2,lim.sup.tempr2)
+
+lim.sup.part<-  2.554e-01 + 1.886e-02*1.96
+lim.inf.part<-  2.554e-01 -( 1.886e-02*1.96)
+part<- 2.554e-01
+par<-c(lim.inf.part,part,lim.sup.part)
+
+resid<-resid(mod)
+tsdisplay(resid)
+```
+Correlacisn en los residuales.
+
+
+mod2<-dyn$lm(cmort ~ tiemp + tempr + I(tempr^2) + part + lag(part, 4))
+sum_mod2<-summary(mod2)
+
+
+
+sumod2<-summary(mod2)
+lim.sup.alpha<-3.012e+03+1.945e+02 *1.96
+lim.inf.alpha<-3.012e+03-1.945e+02 *1.96
+alpha<-3.012e+03
+alph<-c(lim.inf.alpha,alpha,lim.sup.alpha)
+
+lim.sup.tiemp<- -1.400e+00  + 9.843e-02*1.96
+lim.inf.tiemp<- -1.400e+00  - 9.843e-02*1.96
+tiemp<- -1.400e+00 
+tiempo<-c(lim.inf.tiemp,tiemp,lim.sup.tiemp)
+
+lim.sup.tempr<--4.064e+00 + 4.102e-01*1.96
+lim.inf.tempr<--4.064e+00 - 4.102e-01*1.96
+tempr<--4.064e+00
+temp<-c(lim.inf.tempr,tempr,lim.sup.tempr)
+
+lim.sup.tempr2<- 2.408e-02 + 2.737e-03*1.96
+lim.inf.tempr2<- 2.408e-02 - 2.737e-03*1.96
+tempr2<- 2.408e-02
+temp2<-c(lim.inf.tempr2,tempr2,lim.sup.tempr2)
+
+lim.sup.part<-  3.302e-01 + 2.146e-02*1.96
+lim.inf.part<-  3.302e-01 - 2.146e-02*1.96
+part<- 3.302e-01
+par<-c(lim.inf.part,part,lim.sup.part)
+
+lim.sup.part4<-  -1.406e-01 +  2.153e-02 *1.96
+lim.inf.part4<-  -1.406e-01 -  2.153e-02 *1.96
+part4<- -1.406e-01
+par4<-c(lim.inf.part4,part4,lim.sup.part4)
+
+resid2<-resid(mod2)
+library(forecast)
+tsdisplay(resid2)
+```
+Residuales  con Correlacionados
+
+FIN DE EJERCICIO 2
+
+EJERCICIO 3
+
+Utilice la serie oil y gas
+a. Describa qu(& mide cada serie de tiempo
+```{r}
+?oil
+?gas
+class(oil)
+class(gas)
+end(gas)
+start(gas)
+end(oil)
+start(oil)
+frequency(oil)
+frequency(gas)
+```
+oil: Crude oil, WTI spot price FOB (in dollars per barrel), weekly data from 2000 to mid-2010.
+
+gas:New York Harbor conventional regular gasoline weekly spot price FOB (in cents per gallon) from 2000 to mid-2010.
+
+b. Aplique la transformaci(.n
+```{r}
+oil.cp<-diff(log(oil))
+gas.cp<-diff(log(gas))
+par(mfrow=c(2,1))
+plot(oil.cp)
+plot(gas.cp)
+
+
+```
+
+c. Gra023que la funci(.n de correlaci(.n cruzada entre estas serie con ccf(). 
+```{r,eval=FALSE}
+help(ccf)
+par(mfrow=c(1,1))
+ccf(oil.cp,gas.cp,plot =FALSE, lag.max = 5)
+ccf(oil.cp,gas.cp, lag.max = 5, ylab = "cross-correlation")
+```
+Valores significativos:
+lag 1 
+lag 3
+
+d. Utilice la funci(.n lag2.plot() para analizar el efecto sobre oil.pc de gas.pc con hasta 3 semanas de retardo.
+
+help("lag2.plot")
+library(stats)
+lag2.plot(oil.cp,gas.cp,max.lag = 2)
+
+Parecen relaciones lineales?
+No.
+Parecen relaciones estables o signi023cativas?
+La contemporanea solamente
+
+```{r}
+oil
+detach(package:forecast)
+gas
+gas.cp<-diff(lag(gas))
+I=oil.cp>0
+I<-as.numeric(I)
+
+indica<-ifelse(oil.cp<0,0,1)
+
+library(dyn)
+
+reg<-dyn$lm(gas.cp ~ I + oil.cp + lag(oil.cp,1))
+sumreg<-summary(reg)
+
+```
+e.2)
+-Cuando La variable I es uno.
+-Cuando la varibale 0
+9e I es cero.
+-Si ya que si el precio del petroleo va a la alza, incrementa en .01284 m("s el precio de la gas.
