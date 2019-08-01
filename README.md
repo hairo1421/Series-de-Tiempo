@@ -5,6 +5,7 @@ Trabajos realizados en la licenciatura sobre series de tiempo. Esto trabajos abo
 Modelos de media (AR, MA, ARMA, VAR,..., etc)
 * Practica 1
 * Practica 2
+* Examen
 * Proyecto en conjunto con Pablo Hernández; Análisis de la Paridad de Poder de Compra entre México, Estados Unidos y Canadá: Una Aproximación Mediante Series de Tiempo
 
 ### Economía Financiera
