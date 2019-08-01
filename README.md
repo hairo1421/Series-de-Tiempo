@@ -7,10 +7,13 @@ Modelos de media (AR, MA, ARMA, VAR,..., etc)
 FILTROS BAXTER KING & HODRICK PRESCOTT
 * Practica 2: Ecuador Análisis de ciclos (2003-2015)
 FILTROS HP & BK
-* Examen
 * Proyecto en conjunto con Pablo Hernández; Análisis de la Paridad de Poder de Compra entre México, Estados Unidos y Canadá: Una Aproximación Mediante Series de Tiempo
 
 ### Economía Financiera
 Modelos de volatilidad (Family GARCH)
+* Tarea 1
+* Tarea 2
+* Tarea 3
+* Examen
 * Proyecto en conjunto con Pablo Hernández; Basado en Cermeño R. (2012) Volatilidad de la inflación y crecimiento del producto: el case de México, 1993-2011
 
